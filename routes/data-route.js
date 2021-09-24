@@ -1,5 +1,4 @@
 const router = require("express").Router();
-//const axios = require("axios");
 let EventLocation = require('../models/event-location.models');
 
 

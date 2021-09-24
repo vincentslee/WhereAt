@@ -8,7 +8,7 @@ const EventLocationSchema = new Schema({
     // is less protection against cluttering via duplicate but non identical entries. This will be mitigated with SOME parsing but 
     // this most likely will not eliminate this drawback
     event: {type: String, required: true},
-    locations: {type: String, require: true},
+    location: {type: String, require: true},
     amount: {type: Number, default: 0},
 
     },
