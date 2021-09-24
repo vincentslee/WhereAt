@@ -29,19 +29,22 @@ router.route('/add').post((req, res)=>{
 
 });
 
-// Get event data from database
-router.route('/getEvent').get((req, res)=>{
-    let event = req.body.event;
-    EventLocation.find({event: event})
+// Get data from database by events
+router.route('/getEvents').get((req, res)=>{
+    var event = req.query.event;
+    EventLocation.find({
+        event: event
+    })
     .then(eventlocation => res.json(eventlocation))
     .catch(err => res.status(400).json('Error: ' + err))
-
 });
 
-// Get location data from database
-router.route('/getLocation').get((req, res)=>{
-    let location = req.body.location;
-    EventLocation.find({location: location})
+// get data from database by location
+router.route('/getLocations').get((req, res)=>{
+    var location = req.query.location;
+    EventLocation.find({
+        location: location
+    })
     .then(eventlocation => res.json(eventlocation))
     .catch(err => res.status(400).json('Error: ' + err))
 });

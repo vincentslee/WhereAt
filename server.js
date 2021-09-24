@@ -18,6 +18,10 @@ if (process.env.NODE_ENV === "production") {
 // Use apiRoutes
 app.use("/api", apiRoutes);
 
+// API routes for schema
+const dataRouter = require('./routes/data-route.js');
+app.use('/data', dataRouter)
+
 // Send every request to the React app
 // Define any API routes before this runs
 app.get("*", function(req, res) {
@@ -42,10 +46,6 @@ mongoose.connect(URI,
 mongoose.connection.once('open', ()=>{
   console.log("MongoDB connection established");
 });
-
-// API routes for schema
-const dataRouter = require('./routes/data-route.js');
-app.use('/data', dataRouter)
 
 
 app.listen(PORT, function() {

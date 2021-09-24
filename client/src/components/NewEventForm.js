@@ -26,11 +26,7 @@ function NewEventForm(props) {
 
         axios.post('/data/add', payload)
         .then((response)=>{
-            console.log(payload)
-            console.log("Attemping to add...")
-            console.log(response)
             if (response.status === 200){
-                console.log('Added')
             }else{
                 props.showError('Something failed!')
             }
