@@ -29,11 +29,8 @@ app.get("*", function(req, res) {
 });
 
 
-//// IMPORTANT ////
-// Currently the IP whitelist is OFF
 // Connect to the Mongo DB
-//const URI = "mongodb+srv://Vincent:Gd9pRQc3z5m5AS9@main.si0nz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-const URI = "mongodb+srv://Vincent:Gd9pRQc3z5m5AS9@cluster0.prwtb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+const URI = process.env.MDB_URI;
 mongoose.connect(URI,
   err => {
     if(err) throw err;
