@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import axios from 'axios';
 import EventItem from './EventItem';
 
@@ -13,26 +13,32 @@ function ShowItems() {
         e.preventDefault();
 
         let url = '/data/getEvents'
-        const config = {
+        let config = {
             headers: {'Content-Type':'application/json'},
             params: {
-                "event" : e.target.value
+                "event" : eventSearch.current.value
             },
-        }
-        
-        // Change request if user is searching by location
-        if (e.target.id === "locationSearch"){
+        };
+
+        if (!eventSearch.current.value && !locationSearch.current.value){
+            getRecent();
+        } else if (!eventSearch.current.value){
             url = '/data/getLocations'
-            config.params = {
-                "location" : e.target.value
-            }
+            config = {
+                headers: {'Content-Type':'application/json'},
+                params: {
+                    "location" : locationSearch.current.value
+                },
+            };
+            getEventLocations(url, config);
+        } else {
+            getEventLocations(url, config);
         }
+    };
 
-        const {id, value} = e.target
-
+    const getEventLocations = (url, config) => {
         axios.get(url, config)
         .then((response)=>{
-            // If both search fields are input, this function will filter out all results that don't fit both values.
             if (eventSearch.current.value && locationSearch.current.value){
                 var newitems = response.data.filter(item => item.event === eventSearch.current.value && item.location === locationSearch.current.value);
                 setItems(newitems)
@@ -43,18 +49,41 @@ function ShowItems() {
             console.log(err)
         });
     }
-    
+
+    const getRecent = () => {
+        const config = {
+            headers: {'Content-Type':'application/json'},
+        }
+        axios.get('/data/getRecent', config)
+        .then((response)=>{
+            setItems(response.data)
+        }).catch(err=>{
+            console.log(err)
+        });
+    };
+
+    useEffect(() => {
+        getRecent();
+    }, []);
+
+
     return (
-        <div>
-            <div>
-                <input ref={eventSearch} onChange={Search} type="search" placeholder="Search events" id="eventSearch"/>
+        <div className="items-display justify-content-center">
+            <div id="SearchBar">
+                <div className="row">
+                    <button className="col">Recent near you</button>
+                    <button className="col">Popular near you</button>
+                </div>
+                <div className="row">
+                    <input className="col" ref={eventSearch} onChange={Search} type="search" placeholder="Search events" id="eventSearch"/>
+                    <input className="col" ref={locationSearch} onChange={Search}  type="search" placeholder="Search locations" id="locationSearch"/>
+                </div>
             </div>
-            <div>
-                <input ref={locationSearch} onChange={Search}  type="search" placeholder="Search locations" id="locationSearch"/>
+            <div className="container-fluid item-container justify-content-center">
+                {items.length > 0 ?items.map((item)=>{
+                    return <EventItem event={item.event} location={item.location} amount={item.amount} date={item.updatedAt}></EventItem>
+                }) : <h1>None found</h1>}
             </div>
-            {items.map((item)=>{
-                return <EventItem event={item.event} location={item.location} amount={item.amount} date={item.updatedAt}></EventItem>
-            })}
         </div>
     )
 }

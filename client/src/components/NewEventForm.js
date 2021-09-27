@@ -19,56 +19,87 @@ function NewEventForm(props) {
 
     const handleSubmitClick = (e) => {
         e.preventDefault();
+
+        setShown(true)
         const payload={
             "event":state.event,
             "location":state.location
         }
 
-        axios.post('/data/add', payload)
-        .then((response)=>{
-            if (response.status === 200){
-            }else{
-                props.showError('Something failed!')
-            }
-
-        })
-        .catch(err=>{
-            console.log(err)
-        })
-        
+        // Ensures content must be minimum length
+        if (payload.event.length > 2 && payload.location.length > 5){
+            axios.post('/data/add', payload)
+            .then((response)=>{
+                if (response.status === 200){
+                }else{
+                    props.showError('Something failed!')
+                }
+    
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+        } else {
+            console.log("invalid submission")
+        }        
     }
+
+    const [shown, setShown] = useState(true)
+    const toggleForm = (e) => {
+        e.preventDefault();
+        setShown(!shown);
+    }
+
+
+
     return (
         <div>
-            <form>
-                <label>What happened?</label>
-                <input
-                    type="text"
-                    placeholder="I..."
-                    value={state.event}
-                    onChange={handleChange}
+            <div className="row" style={{display: (shown ? "none" : "block")}}>
+                <form id="NewEventForm">
+                    <div className="d-flex flex-row-reverse">
+                        <button 
+                        onClick={toggleForm}
 
-                    id="event"
-                >
-                </input>
+                        style={{right: '0'}}>
+                        x</button>
+                    </div>
 
-                <label>Where at?</label>
-                <input
-                    type="text"
-                    placeholder="Location"
-                    value={state.location}
-                    onChange={handleChange}
+                    <input
+                        type="text"
+                        placeholder="What happened?"
+                        value={state.event}
+                        onChange={handleChange}
 
-                    id="location"
-                >
-                </input>
+                        id="event"
+                        className="col"
+                    >
+                    </input>
 
-                <button
-                type="submit"
-                onClick={handleSubmitClick}
-                >Submit</button>
+                    <input
+                        type="text"
+                        placeholder="Where at?"
+                        value={state.location}
+                        onChange={handleChange}
 
-            </form>
-            
+                        id="location"
+                        className="col"
+                    >
+                    </input>
+
+                    <button
+                    type="submit"
+                    onClick={handleSubmitClick}
+
+                    className="col"
+                    >Submit</button>
+
+                </form>
+            </div>
+            <button
+            onClick={toggleForm}
+
+            id="ToggleFormButton"
+            >Add new</button>
         </div>
     )
 }

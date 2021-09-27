@@ -14,11 +14,7 @@ function EventItem(item, props) {
         }
         axios.post('/data/add', payload)
         .then((response)=>{
-            console.log(payload)
-            console.log("Attemping to add...")
-            console.log(response)
             if (response.status === 200){
-                console.log('Added')
                 setAmount(amount+1)
             }else{
                 props.showError('Something failed!')
@@ -29,18 +25,20 @@ function EventItem(item, props) {
         })
     }
 
-
-    console.log(item)
     return (
-        <div >
-            <div>
-                <p> I got </p>
-                <h2>{item.event}</h2>
-                <p> at </p>
-                <h2>{item.location}</h2>
-                <p> {amount} times</p>
+        <div className="row event-item justify-content-start">
+            <h2 className="col-sm-auto">{item.event}</h2>
+            <div className="w-100"></div>
+            <h2 className="col-sm-auto">at {item.location}</h2>
+            <div className="w-100"></div>
+            <div className="col-sm-auto">
+                <div className="row">
+                    <h4 className="col">{amount} others had a similar experience <button onClick={handleSubmitClick}>Same!</button></h4>
+                    
+                </div>
             </div>
-            <button onClick={handleSubmitClick}>Same!</button>
+            <div className="w-100"></div>
+            <p className="col-sm" style={{textAlign: 'left'}}>{item.date}</p>
         </div>
     )
 }

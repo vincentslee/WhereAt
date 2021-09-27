@@ -30,9 +30,6 @@ app.get("*", function(req, res) {
 
 
 //// IMPORTANT ////
-//// IMPORTANT ////
-//// IMPORTANT ////
-//// IMPORTANT ////
 // Currently the IP whitelist is OFF
 // Connect to the Mongo DB
 //const URI = "mongodb+srv://Vincent:Gd9pRQc3z5m5AS9@main.si0nz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";

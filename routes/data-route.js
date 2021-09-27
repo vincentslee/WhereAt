@@ -49,4 +49,11 @@ router.route('/getLocations').get((req, res)=>{
     .catch(err => res.status(400).json('Error: ' + err))
 });
 
+router.route('/getRecent').get((req, res)=>{
+    var amount = 10;
+    EventLocation.find().sort({$natural:-1}).limit(amount)
+    .then(eventlocation => res.json(eventlocation))
+    .catch(err => res.status(400).json('Error: ' + err))
+});
+
 module.exports = router;

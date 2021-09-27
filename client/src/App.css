@@ -1,24 +1,97 @@
-.App {
+body {
+  overflow: hidden;
+  background-color: deepskyblue;
+}
+
+html, body, .App {
+  margin: 0; 
+  max-height: 100%; 
+  overflow: hidden;
+  top: 0;
+}
+
+.App{
+  justify-content: center;
   text-align: center;
+  padding: 0;
+  max-height: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+#NewEventForm {
+  position: absolute;
+  border: solid 5px black;
+  top: 25vh;
+  left: 0;
+  right: 0;
+  align-self: center;
+  z-index: 10;
+  margin-right: 10vw;
+  margin-left: 10vw;
+  height: 50vh;
+  background-color: floralwhite;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+#ToggleFormButton {
+  position: absolute;
+  z-index: 9;
+
+  right: 10vw;
+  bottom: 10vh;
+
+  width: 20vw;
+  height: 20vw;
+
   color: white;
+  background-color: mediumblue;
 }
 
-.App-intro {
-  font-size: large;
+#Header, #SearchBar {
+  height: 8vh;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.event-item {
+  border-bottom: solid 5px black;
+  align-self: center;
+  background-color: floralwhite;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  height: 30vh;
+  text-align: start;
+}
+
+
+.container {
+  z-index: -1;
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+.container::-webkit-scrollbar { /* WebKit */
+  width: 0;
+  height: 0;
+}
+
+.item-container {
+  overflow: scroll;
+  height: 84vh;
+  background-color: dodgerblue;
+  width: 100%;
+}
+
+h1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: block;
+  line-height: 1em; /* a */
+  max-height: 2em; /* a x number of line to show (ex : 2 line)  */
+}
+
+h2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: block;
+  line-height: 1em; /* a */
+  max-height: 2em; /* a x number of line to show (ex : 2 line)  */
 }
