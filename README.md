@@ -21,8 +21,7 @@
   </p>
 </p>
 
-<img src="https://raw.githubusercontent.com/vincentslee/WhereAt/master/Screen%20Shot%202021-09-21%20at%201.41.52%20PM.png" alt="screenshot.png">
-<img src="https://raw.githubusercontent.com/vincentslee/WhereAt/master/Screen%20Shot%202021-09-21%20at%201.51.21%20PM.png" alt="screenshot1.png">
+<img src="https://raw.githubusercontent.com/vincentslee/WhereAt/main/Screen%20Shot%202021-09-28%20at%204.14.09%20PM.png" alt="screenshot.png">
 
 
 
