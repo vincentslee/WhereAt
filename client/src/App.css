@@ -1,13 +1,15 @@
 body {
   overflow: hidden;
-  background-color: deepskyblue;
+  background-color: dodgerblue;
+  color: white;
+
 }
 
 html, body, .App {
   margin: 0; 
-  max-height: 100%; 
   overflow: hidden;
   top: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .App{
@@ -19,7 +21,7 @@ html, body, .App {
 
 #NewEventForm {
   position: absolute;
-  border: solid 5px black;
+  border: solid 1px black;
   top: 25vh;
   left: 0;
   right: 0;
@@ -28,7 +30,8 @@ html, body, .App {
   margin-right: 10vw;
   margin-left: 10vw;
   height: 50vh;
-  background-color: floralwhite;
+  background-color: dodgerblue;
+  border-radius: 25px;
 }
 
 #ToggleFormButton {
@@ -42,21 +45,33 @@ html, body, .App {
   height: 20vw;
 
   color: white;
-  background-color: mediumblue;
+  background-color: dodgerblue;
+  border-radius: 25px;
 }
 
 #Header, #SearchBar {
   height: 8vh;
+  background-color: dodgerblue;
+
+  z-index: 100;
+}
+
+#Header {
+  padding-top: 1vh;
 }
 
 .event-item {
-  border-bottom: solid 5px black;
+  border-bottom: solid 5px darkgrey;
   align-self: center;
-  background-color: floralwhite;
+  background-color: white;
   padding-left: 5vw;
   padding-right: 5vw;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
   height: 30vh;
   text-align: start;
+  color: black;
+  width: auto;
 }
 
 
@@ -74,8 +89,9 @@ html, body, .App {
 .item-container {
   overflow: scroll;
   height: 84vh;
-  background-color: dodgerblue;
+  background-color: white;
   width: 100%;
+  color: black;
 }
 
 h1 {
@@ -94,4 +110,41 @@ h2 {
   display: block;
   line-height: 1em; /* a */
   max-height: 2em; /* a x number of line to show (ex : 2 line)  */
+}
+
+button {
+  display: inline-block;
+  border: solid black 1px;
+  text-decoration: none;
+  background: #0069ed;
+  color: #ffffff;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, 
+              transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button:hover,
+button:focus {
+  background: #0053ba;
+}
+
+button:focus {
+  outline: 2px solid #fff;
+  outline-offset: -2px;
+}
+
+button:active {
+  transform: scale(0.99);
+}
+
+input {
+  border: solid black 1px;
+  text-align: center;
+}
+input:focus {
+  outline: 2px solid black;
+  outline-offset: -2px;
 }

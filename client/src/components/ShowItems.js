@@ -70,10 +70,12 @@ function ShowItems() {
     return (
         <div className="items-display justify-content-center">
             <div id="SearchBar">
-                <div className="row">
+
+{/*                 <div className="row">
                     <button className="col">Recent near you</button>
                     <button className="col">Popular near you</button>
-                </div>
+                </div> */}
+
                 <div className="row">
                     <input className="col" ref={eventSearch} onChange={Search} type="search" placeholder="Search events" id="eventSearch"/>
                     <input className="col" ref={locationSearch} onChange={Search}  type="search" placeholder="Search locations" id="locationSearch"/>

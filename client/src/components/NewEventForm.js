@@ -1,13 +1,15 @@
 import React, {useState} from 'react'
+import { useHistory } from 'react-router'
 import axios from 'axios'
 
 function NewEventForm(props) {
 
-    const [state, setState] = useState({
+    const defaultState = {
         event : "",
         location : "",
         successMessage: null
-    })
+    }
+    const [state, setState] = useState(defaultState)
 
     const handleChange = (e) => {
         const {id, value} = e.target
@@ -31,10 +33,11 @@ function NewEventForm(props) {
             axios.post('/data/add', payload)
             .then((response)=>{
                 if (response.status === 200){
+                    setState(defaultState)
                 }else{
                     props.showError('Something failed!')
                 }
-    
+                
             })
             .catch(err=>{
                 console.log(err)

@@ -25,6 +25,8 @@ function EventItem(item, props) {
         })
     }
 
+    const newdate = new Date(item.date).toLocaleDateString();
+
     return (
         <div className="row event-item justify-content-start">
             <h2 className="col-sm-auto">{item.event}</h2>
@@ -33,12 +35,12 @@ function EventItem(item, props) {
             <div className="w-100"></div>
             <div className="col-sm-auto">
                 <div className="row">
-                    <h4 className="col">{amount} others had a similar experience <button onClick={handleSubmitClick}>Same!</button></h4>
+                    <h4 className="col">{amount-1} others had a similar experience <button onClick={handleSubmitClick}>Same!</button></h4>
                     
                 </div>
             </div>
             <div className="w-100"></div>
-            <p className="col-sm" style={{textAlign: 'left'}}>{item.date}</p>
+            <p className="col-sm" style={{textAlign: 'left'}}>{newdate}</p>
         </div>
     )
 }
