@@ -8,7 +8,7 @@
   <h3 align="center">WhereAt</h3>
 
   <p align="center">
-    A way to track and graph blood pressure over time. 
+    See where it's at 
     <br />
     <a href="https://github.com/vincentslee/WhereAt"><strong>Explore the docs »</strong></a>
     <br />
