@@ -13,7 +13,7 @@
     <a href="https://github.com/vincentslee/WhereAt"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://vincentslee.github.io/WhereAt/">View Demo</a>
+    <a href="https://still-sierra-44908.herokuapp.com/">View Demo</a>
     ·
     <a href="https://github.com/vincentslee/WhereAt/issues">Report Bug</a>
     ·
@@ -56,7 +56,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-WhereAt is a social app that allows users to publicly log what's happening and "where at".
+WhereAt is a social app that allows users to publicly log what's happening and "where at". This website is designed for mobile, so make sure to use it in mobile view.
 
 ### Built With
 
